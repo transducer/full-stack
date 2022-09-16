@@ -27,7 +27,7 @@ Navigate to [localhost:8080][1] for the frontend.
 
 ### 📐 Component diagram
 
-![architecture](component-diagram.png)
+![architecture](doc/component-diagram.png)
 
 <sub><sup>Diagram generated from
 [doc/component-diagram.puml](doc/component-diagram.puml) using
