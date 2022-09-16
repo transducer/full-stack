@@ -1,10 +1,10 @@
 (ns software.rooijakkers.full-stack.routes.home
   (:require
-   [software.rooijakkers.full-stack.layout :as layout]
    [clojure.java.io :as io]
-   [software.rooijakkers.full-stack.middleware :as middleware]
+   [ring.util.http-response :as response]
    [ring.util.response]
-   [ring.util.http-response :as response]))
+   [software.rooijakkers.full-stack.layout :as layout]
+   [software.rooijakkers.full-stack.middleware :as middleware]))
 
 (defn home-page [request]
   (layout/render request "home.html" {:docs (-> "docs/docs.md" io/resource slurp)}))
@@ -13,9 +13,8 @@
   (layout/render request "about.html"))
 
 (defn home-routes []
-  [ "" 
+  [ ""
    {:middleware [middleware/wrap-csrf
                  middleware/wrap-formats]}
    ["/" {:get home-page}]
    ["/about" {:get about-page}]])
-

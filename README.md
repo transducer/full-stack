@@ -5,6 +5,7 @@ Frontend and backend for vending machine.
 ## 📋 Prerequisites
 
 - java
+- lein
 - npm
 
 ## 🚀 Build and start
