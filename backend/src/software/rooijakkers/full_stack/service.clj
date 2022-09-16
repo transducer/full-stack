@@ -60,7 +60,8 @@
   (->
    {:env :prod
     ::http/routes routes
-    ::http/allowed-origins ["http://localhost:8080"]
+    ::http/allowed-origins ["http://localhost:8080"
+                            "http://localhost:8280"]
     ::http/resource-path "/public"
     ::http/type :jetty
     ::http/port 3000
