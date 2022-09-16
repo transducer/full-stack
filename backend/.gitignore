@@ -1,18 +1,38 @@
-/target
-/lib
-/classes
-/checkouts
+# Project related
+
+# Java related
 pom.xml
-dev-config.edn
-test-config.edn
-*.jar
+pom.xml.asc
+*jar
 *.class
-/.lein-*
-profiles.clj
-/.env
+
+# Leiningen
+classes/
+lib/
+native/
+checkouts/
+target/
+.lein-*
+repl-port
 .nrepl-port
+.repl
 
-/node_modules
-/log
+# Temp Files
+*.orig
+*~
+.*.swp
+.*.swo
+*.tmp
+*.bak
 
+# OS X
+.DS_Store
+
+# Logging
+*.log
+/logs/
+
+# Builds
+out/
+build/
 

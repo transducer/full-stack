@@ -2,8 +2,7 @@
 
 all: prod
 
-test:
-	lein test
+test: lein test
 
 prod:
 	lein uberjar
