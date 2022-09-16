@@ -1,6 +1,6 @@
-.PHONY: test
+.PHONY: test all
 
-all: deps
+all: prod
 
 css:
 	npm run build-css
