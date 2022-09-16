@@ -25,6 +25,9 @@ Navigate to [localhost:8080][1] for the frontend.
 
 ## 📖  Documentation
 
+- [Frontend](frontend/README.md)
+- [Backend](backend/README.md)
+
 ### 📐 Component diagram
 
 ![architecture](doc/component-diagram.png)
