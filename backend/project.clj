@@ -15,6 +15,8 @@
                  [org.clojure/core.logic "1.0.0"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
+  :test-selectors {:unit (complement :integration)
+                   :integration :integration}
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "software.rooijakkers.full-stack.server/run-dev"]}
                    :dependencies [[io.pedestal/pedestal.service-tools "0.5.10"]]}
              :uberjar {:aot [software.rooijakkers.full-stack.server]}}

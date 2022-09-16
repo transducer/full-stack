@@ -2,7 +2,14 @@
 
 all: prod
 
-test: lein test
+test:
+	lein test
+
+unit-test:
+	lein test :unit
+
+integration-test:
+	lein test :integration
 
 prod:
 	lein uberjar
