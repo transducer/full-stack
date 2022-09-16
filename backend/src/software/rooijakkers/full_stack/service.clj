@@ -1,39 +1,30 @@
 (ns software.rooijakkers.full-stack.service
   (:require
-   [io.pedestal.http :as http]
-   [io.pedestal.http.body-params :as body-params]
-   [io.pedestal.http.route :as route]
-   [ring.util.response :as ring-resp]))
+   #_[reitit.swagger :as swagger]
+   #_[reitit.swagger-ui :as swagger-ui]
+   [io.pedestal.http :as http]))
 
-(defn about-page
-  [request]
-  (ring-resp/response (format "Clojure %s - served from %s"
-                              (clojure-version)
-                              (route/url-for ::about-page))))
-
-(defn home-page
-  [request]
-  (ring-resp/response "Hello World!"))
-
-;; Defines "/" and "/about" routes with their associated :get handlers.
-;; The interceptors defined after the verb map (e.g., {:get home-page}
-;; apply to / and its children (/about).
-(def common-interceptors [(body-params/body-params) http/html-body])
+(def ping-handler
+  (fn [_req] {:status 200, :body {:data "pong"}}))
 
 (def routes
-  `[[["/" {:get home-page}
-      ^:interceptors [(body-params/body-params) http/html-body]
-      ["/about" {:get about-page}]]]])
+  `[[["/"
+      ["/ping" {:get ping-handler}]]
+
+     #_^{:no-doc true}
+     ["/"
+      ["/swagger.json" {:get (swagger/create-swagger-handler)}]
+      ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]]])
 
 (def service
-  {:env :prod
-   ::http/routes routes
-   ::http/allowed-origins ["http://localhost:8080"]
-
-   ::http/resource-path "/public"
-   ::http/type :jetty
-   ::http/port 3000
-   ::http/host "0.0.0.0"
-   ::http/container-options {:h2c? true
-                             :h2? false
-                             :ssl? false}})
+  (->
+   {:env :prod
+    ::http/routes routes
+    ::http/allowed-origins ["http://localhost:8080"]
+    ::http/resource-path "/public"
+    ::http/type :jetty
+    ::http/port 3000
+    ::http/host "0.0.0.0"
+    ::http/container-options {:h2c? true, :h2? false, :ssl? false}}
+   http/default-interceptors
+   (update ::http/interceptors into [http/json-body])))
