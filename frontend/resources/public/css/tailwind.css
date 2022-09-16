@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-gray-100.striped {
+  background-image: linear-gradient(
+    110deg,
+    #f3f4f6 10%,
+    white 10%,
+    white 50%,
+    #f3f4f6 50%,
+    #f3f4f6 60%,
+    white 60%,
+    white 100%
+  );
+  background-size: 5.32px 14.62px;}
+
+.bg-gray-500.striped {
+  background-image: linear-gradient(
+    110deg,
+    #9CA3AF 10%,
+    white 10%,
+    white 50%,
+    #9CA3AF 50%,
+    #9CA3AF 60%,
+    white 60%,
+    white 100%
+  );
+  background-size: 5.32px 14.62px;}
+
+.bg-gray-500.striped:focus {
+  background-color: white;
+  background-image: none;
+}
+
+button.bg-gray-500.striped:hover {
+  background-color: white;
+  background-image: none;
+}
