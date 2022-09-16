@@ -1,0 +1,1 @@
+web: java -Dclojure.main.report=stderr -cp target/uberjar/software.rooijakkers.full-stack.jar clojure.main -m software.rooijakkers.full-stack.core

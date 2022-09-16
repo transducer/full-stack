@@ -1,4 +1,6 @@
-.PHONY: test
+.PHONY: test all
+
+all: prod
 
 test:
 	lein test

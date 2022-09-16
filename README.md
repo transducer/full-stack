@@ -7,6 +7,15 @@ Frontend and backend for vending machine.
 - java
 - npm
 
+## 🚀 Build and start
+
+```sh
+make
+```
+## 🔥 Visit
+
+Navigate to [localhost:8080][1] for the frontend.
+
 ## 🏗 Build
 
 ```sh
@@ -19,11 +28,7 @@ make build
 make run
 ```
 
-## 🔥 Visit
-
-Navigate to [localhost:8080][1] for the frontend.
-
-## 📖  Documentation
+## 📖 Documentation
 
 - [Frontend](frontend/README.md)
 - [Backend](backend/README.md)
