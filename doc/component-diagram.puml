@@ -1,0 +1,28 @@
+@startuml
+
+actor as user
+
+database "Keycloak" as keycloak {
+  node "roles"
+  node "users"
+}
+
+node "Frontend" as frontend {
+    [gatekeeper] as gk1
+    [webpage] as page
+}
+node "Backend" as backend {
+    [gatekeeper] as gk2
+    [API (JWT available)] as api
+    database "in-mem database" as db
+}
+
+user --> gk1
+gk1 <--> page
+gk2 <--> page
+gk2 <--> api
+api <--> db
+gk1 <-> keycloak
+gk2 <-> keycloak
+
+@enduml
