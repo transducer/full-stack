@@ -20,3 +20,4 @@ prod:
 	npm install
 	npm run build-css
 	npx shadow-cljs release prod
+	docker build . -t full-stack-frontend
