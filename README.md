@@ -29,6 +29,17 @@ make build
 make run
 ```
 
+## 🧪 Test
+
+For running all unit and integration tests
+
+```sh
+make test
+```
+
+For testing the API via Postman this
+[Postman Collection](doc/postman_collection.json) can be imported into Postman.
+
 ## 📖 Documentation
 
 - [Frontend](frontend/README.md)

@@ -3,7 +3,12 @@
 all: build run
 
 build:
-	pushd frontend && make; popd
 	pushd backend && make; popd
+	pushd frontend && make; popd
+
+test:
+	pushd backend && make test; popd
+	pushd frontend && make test; popd
+
 run:
 	docker-compose up
