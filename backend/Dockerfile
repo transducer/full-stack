@@ -1,6 +1,6 @@
 FROM openjdk:8-alpine
 
-COPY target/uberjar/software.rooijakkers.full-stack.jar /software.rooijakkers.full-stack/app.jar
+COPY target/default+uberjar/software.rooijakkers.full-stack.jar /software.rooijakkers.full-stack/app.jar
 
 EXPOSE 3000
 
