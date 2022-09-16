@@ -11,7 +11,8 @@
                  [ch.qos.logback/logback-classic "1.2.9" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/jul-to-slf4j "1.7.30"]
                  [org.slf4j/jcl-over-slf4j "1.7.30"]
-                 [org.slf4j/log4j-over-slf4j "1.7.30"]]
+                 [org.slf4j/log4j-over-slf4j "1.7.30"]
+                 [org.clojure/core.logic "1.0.0"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "software.rooijakkers.full-stack.server/run-dev"]}
