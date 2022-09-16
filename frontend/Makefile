@@ -12,6 +12,10 @@ deps:
 watch:
 	npx shadow-cljs watch dev
 
+test: deps
+	npx shadow-cljs compile ci
+	npm run karma
+
 prod:
 	npm install
 	npm run build-css

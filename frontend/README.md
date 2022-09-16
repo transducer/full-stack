@@ -46,7 +46,6 @@ A [re-frame](https://github.com/day8/re-frame) frontend to work with the vending
 [github actions](https://github.com/features/actions) pipelines.
   - [`test.yaml`](.github/workflows/test.yaml): Pipeline for testing.
 
-
 ### Editor/IDE
 
 Use your preferred editor or IDE that supports Clojure/ClojureScript development. See
@@ -98,8 +97,7 @@ Start a temporary local web server, build the app with the `dev` profile, and se
 browser test runner and karma test runner with hot reload:
 
 ```sh
-npm install
-npx shadow-cljs watch app
+make watch
 ```
 
 Please be patient; it may take over 20 seconds to see any output, and over 40 seconds to complete.
@@ -163,6 +161,7 @@ Run a shadow-cljs action on this project's build id (without the colon, just `ap
 ```sh
 npx shadow-cljs <action> app
 ```
+
 ### Debug Logging
 
 The `debug?` variable in [`config.cljs`](src/cljs/software/rooijakkers/full_stack/config.cljs) defaults to `true` in
@@ -172,10 +171,19 @@ Use `debug?` for logging or other tasks that should run only on `dev` builds:
 
 ```clj
 (ns software.rooijakkers.full-stack.example
-  (:require [software.rooijakkers.full-stack.config :as config])
+  (:require
+   [software.rooijakkers.full-stack.config :as config])
 
 (when config/debug?
   (println "This message will appear in the browser console only on dev builds."))
+```
+
+### Tests
+
+Run tests with
+
+```sh
+make test
 ```
 
 ## Production
@@ -183,8 +191,7 @@ Use `debug?` for logging or other tasks that should run only on `dev` builds:
 Build the app with the `prod` profile:
 
 ```sh
-npm install
-npm run release
+make prod
 ```
 
 Please be patient; it may take over 15 seconds to see any output, and over 30 seconds to complete.
