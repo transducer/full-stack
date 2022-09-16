@@ -16,14 +16,14 @@
 (defn- next-product-id! []
   (swap! last-id inc))
 
-(defn add-product! [amount-available cost name seller-id]
+(defn add-product! [product seller-id]
   (swap! product-db
          assoc
          (next-product-id!)
-         {:amount-available amount-available
-          :cost cost
-          :name name
-          :seller-id seller-id}))
+         (assoc product :seller-id seller-id)))
+
+(defn delete-product! [product-id]
+  (swap! product-db dissoc product-id))
 
 (defn- buy-product!
   "Buy `amount` of product with `product-id`. Returns map with name of product and
@@ -50,6 +50,11 @@
   "Get deposit for user with `user-id`. Returns `nil` when user is unknown."
   [user-id]
   (@user-db user-id))
+
+(defn delete-deposit!
+  "Sets deposit for user with `user-id` to 0."
+  [user-id]
+  (swap! user-db assoc user-id 0))
 
 (defn- pay!
   "Subtract `amount` from deposit of user with id `user-id` and return new amount"
