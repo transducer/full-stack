@@ -27,7 +27,7 @@ To learn more about configuring Logback, read its [documentation](http://logback
 
 ### [Docker](https://www.docker.com/) container support
 
-1. Configure your service to accept incoming connections (edit service.clj and add  ::http/host "0.0.0.0")
+1. Configure your service to accept incoming connections (edit service.clj and add ::http/host "0.0.0.0")
 1. Build an uberjar of your service: `lein uberjar`
 1. Build a Docker image: `sudo docker build -t software.rooijakkers.full-stack .`
 1. Run your Docker image: `docker run -p 8080:8080 software.rooijakkers.full-stack`
