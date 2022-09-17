@@ -35,10 +35,7 @@
    :product (:name (@product-db product-id))})
 
 (defn get-products! []
-  (reduce (fn [m [id product]]
-            (assoc m id product))
-          {}
-          @product-db))
+  @product-db)
 
 (defn deposit!
   "Add `amount` to deposit of user with id `user-id` and return new amount"
