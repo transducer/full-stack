@@ -24,6 +24,11 @@
    ;; TODO: user-id
    :body {:data (db/deposit! :user-id (parse-long amount))}})
 
+(defn get-deposit [_req]
+  {:status 200
+   ;; TODO: user-id
+   :body {:data (db/get-deposit! :user-id)}})
+
 (defn delete-deposit [_req]
   {:status 200
    ;; TODO: user-id
@@ -45,7 +50,8 @@
       ["/product" {:get get-product
                    :post post-product}]
       ["/product/:id" {:delete delete-product}]
-      ["/deposit" {:delete delete-deposit}]
+      ["/deposit" {:get get-deposit
+                   :delete delete-deposit}]
       ["/deposit/:amount" {:post post-deposit}]
       ["/buy" {:post post-buy}]
       ["/user" {:get get-user}]]

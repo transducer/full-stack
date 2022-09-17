@@ -1,12 +1,6 @@
 (ns software.rooijakkers.full-stack.subs
   (:require
-   [re-frame.core :as re-frame]
-   [software.rooijakkers.full-stack.events :as events]))
-
-(re-frame/reg-sub
- ::name
- (fn [db]
-   (:name db)))
+   [re-frame.core :as re-frame]))
 
 (re-frame/reg-sub
  ::deposit
@@ -17,3 +11,13 @@
  ::products
  (fn [db]
    (:products db)))
+
+(re-frame/reg-sub
+ ::deposit-result
+ (fn [db]
+   (:deposit db)))
+
+(re-frame/reg-sub
+ ::buy-result
+ (fn [db]
+   (:buy-result db)))

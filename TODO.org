@@ -1,0 +1,18 @@
+* TODOs
+
+** Frontend
+- Fix buying
+- Implement screen for adding stuff to vending machine (as buyer)
+
+** Protection of API
+- Add Gatekeeper in front of frontend and backend.
+- Add interceptor that reads JWT.
+
+** User management
+Using Keycloak and Keycloak Gatekeeper.
+
+Single session is possible using Keycloak's Session Count Limiter. See
+https://github.com/keycloak/keycloak-documentation/blob/main/server_admin/topics/authentication/flows.adoc.
+
+*** Ideas:
+- Connect with blockchain using https://github.com/susimsek/keycloak-blockchain-user-federation

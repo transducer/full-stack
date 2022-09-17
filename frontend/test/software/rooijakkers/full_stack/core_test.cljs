@@ -9,5 +9,5 @@
 (deftest init-test
   (re-frame.test/run-test-sync
    (re-frame/dispatch [::events/initialize-db])
-   (let [name (re-frame/subscribe [::subs/name])]
-     (is (string? @name)))))
+   (let [deposit (re-frame/subscribe [::subs/deposit])]
+     (is (zero? @deposit)))))

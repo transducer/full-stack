@@ -36,3 +36,44 @@
  ::set-products
  (fn [db [_ response]]
    (assoc db :products (:data response))))
+
+(re-frame/reg-event-fx
+ ::deposit
+ (fn [_cofx [_ amount]]
+   {:http-xhrio {:method :post
+                 :uri (str base-url "/deposit/" amount)
+                 :format (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success [::deposit-success]
+                 :on-failure [::show-error]}}))
+
+(re-frame/reg-event-fx
+ ::get-deposit
+ (fn [_cofx _]
+   {:http-xhrio {:method :get
+                 :uri (str base-url "/deposit")
+                 :format (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success [::deposit-success]
+                 :on-failure [::show-error]}}))
+
+(re-frame/reg-event-db
+ ::deposit-success
+ (fn [db [_ response]]
+   (assoc db :deposit (or (:data response) 0))))
+
+(re-frame/reg-event-fx
+ ::buy
+ (fn [_cofx _]
+   {:http-xhrio {:method :post
+                 :uri (str base-url "/buy")
+                 ;; TODO: add body...
+                 :format (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success [::buy-success]
+                 :on-failure [::show-error]}}))
+
+(re-frame/reg-event-db
+ ::buy-success
+ (fn [db [_ response]]
+   (assoc db :buy-result (:data response))))

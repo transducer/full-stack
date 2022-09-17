@@ -43,7 +43,7 @@
      (doall
       (for [[product-id {:keys [name amount-available cost]}] products]
         ^{:key product-id}
-        [:div amount-available \space name \space "for" \space cost]))
+        [:div amount-available \space name \space "for" \space cost \space "(id:" product-id ")"]))
      [:div "No products available 😔"])])
 
 (defn- deposited []
@@ -65,17 +65,17 @@
          [products-window @products]
          [label "product id"]
          [:div.col-span-2
-          [input product-id "1" {:auto-focus true}]]
+          [input "1" product-id {:auto-focus true}]]
          [label "amount"]
          [:div.col-span-2
-          [input amount " "]]
+          [input " " amount]]
          [:div.col-start-3
-          [button "Buy" (fn [] (re-frame/dispatch [::events/buy nil]))]]
+          [button "Buy" (fn [] (re-frame/dispatch [::events/buy @product-id @amount]))]]
          [label "amount"]
          [:div.col-span-2
-          [input deposit " "]]
+          [input " " deposit]]
          [:div.col-start-3
-          [button "Deposit" (fn [] (re-frame/dispatch [::events/deposit nil]))]]]]])))
+          [button "Deposit" (fn [] (re-frame/dispatch [::events/deposit @deposit]))]]]]])))
 
 (defn main-panel []
   [container
